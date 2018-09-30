@@ -1,8 +1,8 @@
 # LGDictionary
 知识点课件，电子词典
 <div align="left">
-<img src="https://github.com/LYajun/LGDictionary/blob/master/Assets/dic1.png" width ="375" height ="667" >
-<img src="https://github.com/LYajun/LGDictionary/blob/master/Assets/dic2.png" width ="375" height ="667" >
+<img src="https://github.com/LYajun/LGDictionary/blob/master/Assets/dic1.PNG" width ="375" height ="667" >
+<img src="https://github.com/LYajun/LGDictionary/blob/master/Assets/dic2.PNG" width ="375" height ="667" >
  </div>
  
 ## 使用方式
