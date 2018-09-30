@@ -1,0 +1,7 @@
+platform :ios,'8.0'
+use_frameworks!
+
+target 'LGDictionaryDemo’ do
+pod 'Masonry'
+pod 'MJExtension'
+end
