@@ -9,6 +9,7 @@
 #import "LGDicPlayer.h"
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+#import "LGDictionaryConst.h"
 
 @interface LGDicPlayer ()
 @property (nonatomic,strong) AVPlayer *player;
@@ -24,9 +25,13 @@
 }
 - (void)addNotification{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleEndTimeNotification:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 - (void)applicationDidEnterBackground:(NSNotification *) noti{
     [self stop];
+}
+- (void)handleEndTimeNotification:(NSNotification *) noti{
+    [[NSNotificationCenter defaultCenter] postNotificationName:LGDictionaryPlayerDidFinishPlayNotification object:nil];
 }
 - (void)removeNotification{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -47,6 +52,7 @@
 - (void)stop{
     [self.player pause];
     self.player = nil;
+     [[NSNotificationCenter defaultCenter] postNotificationName:LGDictionaryPlayerDidFinishPlayNotification object:nil];
     [self removeNotification];
 }
 - (AVPlayer *)player{

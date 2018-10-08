@@ -14,4 +14,5 @@
 + (NSString *)lg_bundlePathWithName:(NSString *)name;
 + (UIImage *)lg_imageName:(NSString *)name;
 + (UIImage *)lg_imagePathName:(NSString *)name;
++ (NSArray *)lg_imageVoiceGifs;
 @end

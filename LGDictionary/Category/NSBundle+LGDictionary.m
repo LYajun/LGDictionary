@@ -29,4 +29,7 @@
 + (UIImage *)lg_imagePathName:(NSString *)name{
     return [UIImage imageWithContentsOfFile:[NSBundle lg_bundlePathWithName:name]];
 }
++ (NSArray *)lg_imageVoiceGifs{
+    return @[[NSBundle lg_imageName:@"record_animate-1"],[NSBundle lg_imageName:@"record_animate-2"],[NSBundle lg_imageName:@"record_animate-3"],[NSBundle lg_imageName:@"record_animate-4"]];
+}
 @end

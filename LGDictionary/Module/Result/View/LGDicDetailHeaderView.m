@@ -88,6 +88,9 @@
 @property (strong,nonatomic) UIButton *allFoldBtn;
 @property (strong, nonatomic) UILabel *wordL;
 @property (strong, nonatomic) UILabel *textL;
+
+@property (strong, nonatomic) UIImageView *enPlayGifImage;
+@property (strong, nonatomic) UIImageView *usPlayGifImage;
 @end
 @implementation LGDicDetailHeaderView
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier{
@@ -141,6 +144,29 @@
         make.top.equalTo(self.enVoiceBtn.mas_bottom).offset(5);
         make.bottom.equalTo(botView.mas_top).offset(-10);
     }];
+    
+    [self.contentView addSubview:self.enPlayGifImage];
+    [self.enPlayGifImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.enVoiceBtn);
+        make.left.equalTo(self.enVoiceBtn);
+        make.width.height.mas_equalTo(20);
+    }];
+    [self.contentView addSubview:self.usPlayGifImage];
+    [self.usPlayGifImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.usVoiceBtn);
+        make.left.equalTo(self.usVoiceBtn);
+        make.width.height.mas_equalTo(20);
+    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopGif) name:LGDictionaryPlayerDidFinishPlayNotification object:nil];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)stopGif{
+    self.enPlayGifImage.hidden = YES;
+    [self.enPlayGifImage stopAnimating];
+    self.usPlayGifImage.hidden = YES;
+    [self.usPlayGifImage stopAnimating];
 }
 - (void)setCategoryModel:(LGDicCategoryModel *)categoryModel{
     _categoryModel = categoryModel;
@@ -163,6 +189,8 @@
         [[LGDicPlayer shareInstance] startPlayWithUrl:wordModel.unPVoice];
     }
     [[LGDicPlayer shareInstance] play];
+    self.enPlayGifImage.hidden = NO;
+    [self.enPlayGifImage startAnimating];
 }
 - (void)usVoiceAction{
     LGDicModel *wordModel = [self.categoryModel.categoryList firstObject];
@@ -173,6 +201,8 @@
         [[LGDicPlayer shareInstance] startPlayWithUrl:wordModel.usPVoice];
     }
     [[LGDicPlayer shareInstance] play];
+    self.usPlayGifImage.hidden = NO;
+    [self.usPlayGifImage startAnimating];
 }
 - (void)allExpandAction{
     if (self.allExpandBlock) {
@@ -189,7 +219,7 @@
     if (!_wordL) {
         _wordL = [UILabel new];
         _wordL.textColor = LGDictionaryColorHex(0xFC6000);
-        _wordL.font = [UIFont systemFontOfSize:30];
+        _wordL.font = [UIFont fontWithName:@"Helvetica" size:30];
     }
     return _wordL;
 }
@@ -197,8 +227,7 @@
     if (!_textL) {
         _textL = [UILabel new];
         _textL.backgroundColor = [UIColor whiteColor];
-        _textL.textColor = [UIColor darkGrayColor];
-        _textL.font = [UIFont systemFontOfSize:15];
+        _textL.font = [UIFont fontWithName:@"Helvetica" size:15];
         _textL.numberOfLines = 0;
     }
     return _textL;
@@ -252,5 +281,25 @@
         [_allFoldBtn addTarget:self action:@selector(allFoldAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _allFoldBtn;
+}
+- (UIImageView *)enPlayGifImage{
+    if (!_enPlayGifImage) {
+        _enPlayGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _enPlayGifImage.backgroundColor = [UIColor whiteColor];
+        _enPlayGifImage.animationImages = [NSBundle lg_imageVoiceGifs];
+        _enPlayGifImage.animationDuration = 1.0;
+        _enPlayGifImage.hidden = YES;
+    }
+    return _enPlayGifImage;
+}
+- (UIImageView *)usPlayGifImage{
+    if (!_usPlayGifImage) {
+        _usPlayGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _usPlayGifImage.backgroundColor = [UIColor whiteColor];
+        _usPlayGifImage.animationImages = [NSBundle lg_imageVoiceGifs];
+        _usPlayGifImage.animationDuration = 1.0;
+        _usPlayGifImage.hidden = YES;
+    }
+    return _usPlayGifImage;
 }
 @end

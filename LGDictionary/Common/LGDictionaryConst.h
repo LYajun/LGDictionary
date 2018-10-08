@@ -22,3 +22,4 @@
 UIKIT_EXTERN NSString *const LGDictionaryNoDataText;
 UIKIT_EXTERN NSString *const LGDictionaryLoadErrorText;
 
+UIKIT_EXTERN NSString *const LGDictionaryPlayerDidFinishPlayNotification;

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) UILabel *titleL;
 @property (strong, nonatomic) UIButton *voiceBtn;
 @property (nonatomic,copy) NSString *voiceUrl;
+@property (strong, nonatomic) UIImageView *playGifImage;
 @end
 @implementation LGDicDetailVoiceCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -44,6 +45,20 @@
         make.right.equalTo(self.contentView).offset(-10);
         make.height.mas_greaterThanOrEqualTo(30);
     }];
+    [self.contentView addSubview:self.playGifImage];
+    [self.playGifImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.voiceBtn);
+        make.centerY.equalTo(self.voiceBtn).offset(-4);
+        make.width.height.mas_equalTo(20);
+    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopGif) name:LGDictionaryPlayerDidFinishPlayNotification object:nil];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)stopGif{
+    self.playGifImage.hidden = YES;
+    [self.playGifImage stopAnimating];
 }
 
 - (void)setTextModel:(LGDicCategoryModel *)textModel adIndexPath:(NSIndexPath *)indexPath{
@@ -51,6 +66,7 @@
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:senModel.sentenceEn_attr];
     [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
     [att appendAttributedString:senModel.sTranslation_attr];
+    [att addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica" size:15] range:NSMakeRange(0, att.length)];
     self.titleL.attributedText = att;
     self.voiceUrl = senModel.sViocePath;
 }
@@ -84,5 +100,17 @@
         [[LGDicPlayer shareInstance] startPlayWithUrl:self.voiceUrl];
     }
     [[LGDicPlayer shareInstance] play];
+    self.playGifImage.hidden = NO;
+    [self.playGifImage startAnimating];
+}
+- (UIImageView *)playGifImage{
+    if (!_playGifImage) {
+        _playGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _playGifImage.backgroundColor = [UIColor whiteColor];
+        _playGifImage.animationImages = [NSBundle lg_imageVoiceGifs];
+        _playGifImage.animationDuration = 1.0;
+        _playGifImage.hidden = YES;
+    }
+    return _playGifImage;
 }
 @end
