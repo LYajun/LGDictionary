@@ -41,7 +41,7 @@
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(self.voiceBtn.mas_right);
         make.top.equalTo(self.contentView).offset(5);
-        make.right.equalTo(self.contentView).offset(10);
+        make.right.equalTo(self.contentView).offset(-10);
         make.height.mas_greaterThanOrEqualTo(30);
     }];
 }

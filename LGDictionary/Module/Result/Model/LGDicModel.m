@@ -94,7 +94,7 @@
         }
         meaning = [meaning stringByAppendingString:cxModel.cxEnglish];
         for (MeanCollectionModel *meanModel in cxModel.meanCollection) {
-            meaning = [meaning stringByAppendingString:meanModel.chineseMeaning];
+            meaning = [meaning stringByAppendingString:meanModel.chineseMeaning_attr.string];
         }
         i++;
     }
