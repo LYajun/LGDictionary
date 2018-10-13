@@ -7,16 +7,14 @@
 //
 
 #import "NSBundle+LGDictionary.h"
+#import "LGDicDetailHeaderView.h"
 
 @implementation NSBundle (LGDictionary)
 + (instancetype)lg_dictionaryBundle{
     static NSBundle *dictionaryBundle = nil;
     if (!dictionaryBundle) {
-        NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/LGDictionary.framework/LGDictionary.bundle"];
-        if (![[NSFileManager defaultManager] fileExistsAtPath:bundlePath]) {
-            bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"LGDictionary.bundle"];
-        }
-        dictionaryBundle = [NSBundle bundleWithPath:bundlePath];
+        // 这里不使用mainBundle是为了适配pod 1.x和0.x
+        dictionaryBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[LGDicDetailHeaderView class]] pathForResource:@"LGDictionary" ofType:@"bundle"]];
     }
     return dictionaryBundle;
 }

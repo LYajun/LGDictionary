@@ -172,7 +172,7 @@
     _categoryModel = categoryModel;
     LGDicModel *wordModel = [categoryModel.categoryList firstObject];
     self.wordL.text = wordModel.cwName;
-    self.textL.text = [wordModel wordChineseMean];
+    self.textL.attributedText = [wordModel wordChineseMeanAttr];
     [self.enVoiceBtn setTitle:[@" 英" stringByAppendingString:[NSMutableAttributedString lg_AttributeWithHtmlStr:wordModel.unPText font:14].string] forState:UIControlStateNormal];
     [self.usVoiceBtn setTitle:[@" 美" stringByAppendingString:[NSMutableAttributedString lg_AttributeWithHtmlStr:wordModel.usPText font:14].string] forState:UIControlStateNormal];
     self.allFoldBtn.selected = !categoryModel.foldEnable;

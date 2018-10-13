@@ -65,8 +65,9 @@ typedef NS_ENUM(NSInteger,LGDicMeanType){
 @interface CxCollectionModel : NSObject
 @property (nonatomic, copy) NSString *cxChinese;
 @property (nonatomic, copy) NSString *cxEnglish;
+@property (nonatomic, strong,readonly) NSAttributedString *cxEnglish_attr; // 新增
 @property (nonatomic, copy) NSString *morphology;
-@property (nonatomic,strong)NSArray<MeanCollectionModel *> *meanCollection;
+@property (nonatomic,strong) NSArray<MeanCollectionModel *> *meanCollection;
 @end
 
 @interface LGDicModel : NSObject
@@ -80,4 +81,5 @@ typedef NS_ENUM(NSInteger,LGDicMeanType){
 
 
 - (NSString *)wordChineseMean;
+- (NSAttributedString *)wordChineseMeanAttr;
 @end

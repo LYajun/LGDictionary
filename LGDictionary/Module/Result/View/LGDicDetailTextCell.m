@@ -10,6 +10,7 @@
 #import <Masonry/Masonry.h>
 #import "LGDicCategoryModel.h"
 #import "LGDicModel.h"
+#import "LGDictionaryConst.h"
 
 @interface LGDicDetailTextCell ()
 @property (strong, nonatomic) UILabel *titleL;
@@ -29,7 +30,7 @@
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(10);
-        make.top.equalTo(self.contentView).offset(3);
+        make.top.equalTo(self.contentView).offset(5);
     }];
 }
 - (void)setText:(NSAttributedString *)text{
@@ -43,6 +44,8 @@
             NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:senModel.sentenceEn_attr];
             [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             [att appendAttributedString:senModel.sTranslation_attr];
+            [att addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, att.length)];
+            [att addAttribute:NSForegroundColorAttributeName value:LGDictionaryColorHex(0x282828) range:NSMakeRange(0, att.length)];
             self.titleL.attributedText = att;
         }
             break;
@@ -52,6 +55,8 @@
             NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:classicModel.title_attr];
             [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             [att appendAttributedString:classicModel.content_attr];
+            [att addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, att.length)];
+            [att addAttribute:NSForegroundColorAttributeName value:LGDictionaryColorHex(0x282828) range:NSMakeRange(0, att.length)];
             self.titleL.attributedText = att;
         }
             break;
@@ -61,6 +66,8 @@
             NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:rltModel.title_attr];
             [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             [att appendAttributedString:rltModel.content_attr];
+            [att addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, att.length)];
+            [att addAttribute:NSForegroundColorAttributeName value:LGDictionaryColorHex(0x282828) range:NSMakeRange(0, att.length)];
             self.titleL.attributedText = att;
         }
             break;

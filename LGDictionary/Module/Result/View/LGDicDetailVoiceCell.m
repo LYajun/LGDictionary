@@ -66,7 +66,8 @@
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:senModel.sentenceEn_attr];
     [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
     [att appendAttributedString:senModel.sTranslation_attr];
-    [att addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica" size:15] range:NSMakeRange(0, att.length)];
+    [att addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, att.length)];
+    [att addAttribute:NSForegroundColorAttributeName value:LGDictionaryColorHex(0x282828) range:NSMakeRange(0, att.length)];
     self.titleL.attributedText = att;
     self.voiceUrl = senModel.sViocePath;
 }

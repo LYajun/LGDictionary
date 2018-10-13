@@ -150,9 +150,10 @@ static char *updateDateBlockKey = "updateDateBlock";
     }
 }
 - (CGFloat)lg_navigationBarHeight{
-    CGRect statusRect = [[UIApplication sharedApplication] statusBarFrame];
-    CGRect navRect = self.navigationController.navigationBar.frame;
-    return statusRect.size.height+navRect.size.height;
+    if ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO) {
+        return 64 + 24;
+    }
+    return 64;
 }
 #pragma mark runtime
 - (void)setLoadingView:(UIView *)loadingView{

@@ -12,6 +12,7 @@
 #import "LGDicDetailVoiceCell.h"
 #import "LGDicCategoryModel.h"
 #import "LGDicModel.h"
+#import "LGDictionaryConst.h"
 
 @interface LGDicDetailTableView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -36,6 +37,7 @@
     return self;
 }
 - (void)setDataArr:(NSArray *)dataArr{
+    self.contentOffset = CGPointZero;
     _dataArr = dataArr;
     [self reloadData];
 }
@@ -124,6 +126,8 @@
             NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:meanModel.chineseMeaning_attr];
             [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
             [att appendAttributedString:meanModel.englishMeaning_attr];
+            [att addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, att.length)];
+            [att addAttribute:NSForegroundColorAttributeName value:LGDictionaryColorHex(0x282828) range:NSMakeRange(0, att.length)];
             [textCell setText:att];
             return textCell;
         }else{

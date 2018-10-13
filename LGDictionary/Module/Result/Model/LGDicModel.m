@@ -8,6 +8,7 @@
 
 #import "LGDicModel.h"
 #import "NSMutableAttributedString+LGDictionary.h"
+#import "LGDictionaryConst.h"
 
 @implementation SenCollectionModel
 -(void)setSentenceEn:(NSString *)sentenceEn{
@@ -79,6 +80,10 @@
 + (NSDictionary *)mj_objectClassInArray{
     return @{@"meanCollection":[MeanCollectionModel class]};
 }
+- (void)setCxEnglish:(NSString *)cxEnglish{
+    _cxEnglish = cxEnglish;
+    _cxEnglish_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:cxEnglish font:15];
+}
 @end
 @implementation LGDicModel
 + (NSDictionary *)mj_objectClassInArray{
@@ -99,5 +104,25 @@
         i++;
     }
     return meaning;
+}
+- (NSAttributedString *)wordChineseMeanAttr{
+    NSMutableAttributedString *meaningAttr = [[NSMutableAttributedString alloc] init];
+    int i = 0;
+    for (CxCollectionModel *cxModel in self.cxCollection) {
+        if (i!=0) {
+            [meaningAttr appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
+        }
+        [meaningAttr appendAttributedString:cxModel.cxEnglish_attr];
+        for (MeanCollectionModel *meanModel in cxModel.meanCollection) {
+            [meaningAttr appendAttributedString:meanModel.chineseMeaning_attr];
+        }
+        i++;
+    }
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 5;
+    [meaningAttr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, meaningAttr.length)];
+    [meaningAttr addAttribute:NSForegroundColorAttributeName value:LGDictionaryColorHex(0x282828) range:NSMakeRange(0, meaningAttr.length)];
+    [meaningAttr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, meaningAttr.length)];
+    return meaningAttr;
 }
 @end
