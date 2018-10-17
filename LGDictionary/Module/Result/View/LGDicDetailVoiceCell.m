@@ -48,7 +48,7 @@
     [self.contentView addSubview:self.playGifImage];
     [self.playGifImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.voiceBtn);
-        make.centerY.equalTo(self.voiceBtn).offset(-4);
+        make.centerY.equalTo(self.voiceBtn).offset(-1);
         make.width.height.mas_equalTo(20);
     }];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopGif) name:LGDictionaryPlayerDidFinishPlayNotification object:nil];
@@ -66,7 +66,7 @@
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithAttributedString:senModel.sentenceEn_attr];
     [att appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
     [att appendAttributedString:senModel.sTranslation_attr];
-    [att addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, att.length)];
+//    [att addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, att.length)];
     [att addAttribute:NSForegroundColorAttributeName value:LGDictionaryColorHex(0x282828) range:NSMakeRange(0, att.length)];
     self.titleL.attributedText = att;
     self.voiceUrl = senModel.sViocePath;
@@ -89,7 +89,7 @@
         _voiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_voiceBtn setImage:[NSBundle lg_imageName:@"lg_voice"] forState:UIControlStateNormal];
         [_voiceBtn addTarget:self action:@selector(voiceAction) forControlEvents:UIControlEventTouchUpInside];
-        [_voiceBtn setImageEdgeInsets: UIEdgeInsetsMake(-8, 0, 0, 0)];
+        [_voiceBtn setImageEdgeInsets: UIEdgeInsetsMake(-3, 0, 0, 0)];
     }
     return _voiceBtn;
 }

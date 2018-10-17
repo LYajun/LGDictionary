@@ -9,15 +9,16 @@
 #import "LGDicModel.h"
 #import "NSMutableAttributedString+LGDictionary.h"
 #import "LGDictionaryConst.h"
+#import "NSString+LGDictionary.h"
 
 @implementation SenCollectionModel
 -(void)setSentenceEn:(NSString *)sentenceEn{
     _sentenceEn = sentenceEn;
-    _sentenceEn_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:sentenceEn font:15];
+    _sentenceEn_attr = [sentenceEn lg_appendFontAttibuteWithSize:5.95].lg_toHtmlMutableAttributedString;
 }
 -(void)setSTranslation:(NSString *)sTranslation{
     _sTranslation = sTranslation;
-    _sTranslation_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:sTranslation font:14];
+    _sTranslation_attr = [sTranslation lg_appendFontAttibuteWithSize:4].lg_toHtmlMutableAttributedString;
 }
 @end
 
@@ -25,36 +26,36 @@
 + (NSDictionary *)mj_objectClassInArray{
     return @{@"senCollection":[SenCollectionModel class]};
 }
--(void)setColtEn:(NSString *)coltEn{
-    _coltEn = coltEn;
-    _coltEn_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:coltEn font:15];
-    
-}
--(void)setColtCn:(NSString *)coltCn{
-    _coltCn = coltCn;
-    _coltCn_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:coltCn font:14];
-}
+//-(void)setColtEn:(NSString *)coltEn{
+//    _coltEn = coltEn;
+//    _coltEn_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:coltEn font:15];
+//    
+//}
+//-(void)setColtCn:(NSString *)coltCn{
+//    _coltCn = coltCn;
+//    _coltCn_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:coltCn font:14];
+//}
 @end
 
 @implementation RltCollectionModel
 -(void)setTitle:(NSString *)title{
     _title = title;
-    _title_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:title font:15];
+    _title_attr = [title lg_appendFontAttibuteWithSize:5.95].lg_toHtmlMutableAttributedString;
 }
 -(void)setContent:(NSString *)content{
     _content = content;
-    _content_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:content font:14];
+    _content_attr = [content lg_appendFontAttibuteWithSize:4].lg_toHtmlMutableAttributedString;
 }
 @end
 
 @implementation ClassicCollectionModel
 -(void)setTitle:(NSString *)title{
     _title = title;
-    _title_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:title font:15];
+    _title_attr = [title lg_appendFontAttibuteWithSize:5.95].lg_toHtmlMutableAttributedString;
 }
 -(void)setContent:(NSString *)content{
     _content = content;
-    _content_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:content font:14];
+    _content_attr = [content lg_appendFontAttibuteWithSize:4].lg_toHtmlMutableAttributedString;
 }
 @end
 
@@ -68,11 +69,11 @@
 }
 -(void)setChineseMeaning:(NSString *)chineseMeaning{
     _chineseMeaning = chineseMeaning;
-    _chineseMeaning_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:chineseMeaning font:15];
+    _chineseMeaning_attr = [chineseMeaning lg_appendFontAttibuteWithSize:4].lg_toHtmlMutableAttributedString;
 }
 -(void)setEnglishMeaning:(NSString *)englishMeaning{
     _englishMeaning = englishMeaning;
-    _englishMeaning_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:englishMeaning font:14];
+    _englishMeaning_attr = [englishMeaning lg_appendFontAttibuteWithSize:5.95].lg_toHtmlMutableAttributedString;
 }
 @end
 
@@ -82,7 +83,7 @@
 }
 - (void)setCxEnglish:(NSString *)cxEnglish{
     _cxEnglish = cxEnglish;
-    _cxEnglish_attr = [NSMutableAttributedString lg_AttributeWithHtmlStr:cxEnglish font:15];
+    _cxEnglish_attr = [cxEnglish lg_appendFontAttibuteWithSize:4].lg_toHtmlMutableAttributedString;
 }
 @end
 @implementation LGDicModel

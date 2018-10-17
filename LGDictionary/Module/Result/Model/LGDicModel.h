@@ -26,8 +26,8 @@ typedef NS_ENUM(NSInteger,LGDicMeanType){
 @interface ColtCollectionModel : NSObject
 @property (nonatomic,copy) NSString *coltEn;
 @property (nonatomic,copy) NSString *coltCn;
-@property (nonatomic, strong,readonly) NSAttributedString *coltEn_attr; // 新增
-@property (nonatomic, strong,readonly) NSAttributedString *coltCn_attr; // 新增
+//@property (nonatomic, strong,readonly) NSAttributedString *coltEn_attr; // 新增
+//@property (nonatomic, strong,readonly) NSAttributedString *coltCn_attr; // 新增
 @property (nonatomic,strong)NSArray<SenCollectionModel *> *senCollection;
 @end
 

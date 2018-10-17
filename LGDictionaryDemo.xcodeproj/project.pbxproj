@@ -12,6 +12,7 @@
 		BA273AC9215E03DE00A68D5C /* LGDicRecordFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA273AC8215E03DE00A68D5C /* LGDicRecordFlowCell.m */; };
 		BA273ACC215E1FB400A68D5C /* LGDicRecordClearView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA273ACB215E1FB400A68D5C /* LGDicRecordClearView.m */; };
 		BA273AD0215E468E00A68D5C /* LGDicDetailReqService.m in Sources */ = {isa = PBXBuildFile; fileRef = BA273ACF215E468E00A68D5C /* LGDicDetailReqService.m */; };
+		BA2FA61821772F240060F5FF /* NSString+LGDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FA61721772F240060F5FF /* NSString+LGDictionary.m */; };
 		BA3334A7215F0E2B00CD3E1A /* LGDicDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3334A6215F0E2B00CD3E1A /* LGDicDetailHeaderView.m */; };
 		BA3334AA215F0EA000CD3E1A /* LGDicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3334A8215F0EA000CD3E1A /* LGDicPlayer.m */; };
 		BA3334AD215F118500CD3E1A /* LGDicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3334AC215F118500CD3E1A /* LGDicButton.m */; };
@@ -57,6 +58,8 @@
 		BA273ACB215E1FB400A68D5C /* LGDicRecordClearView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDicRecordClearView.m; sourceTree = "<group>"; };
 		BA273ACE215E468E00A68D5C /* LGDicDetailReqService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDicDetailReqService.h; sourceTree = "<group>"; };
 		BA273ACF215E468E00A68D5C /* LGDicDetailReqService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDicDetailReqService.m; sourceTree = "<group>"; };
+		BA2FA61621772F240060F5FF /* NSString+LGDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGDictionary.h"; sourceTree = "<group>"; };
+		BA2FA61721772F240060F5FF /* NSString+LGDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGDictionary.m"; sourceTree = "<group>"; };
 		BA3334A5215F0E2B00CD3E1A /* LGDicDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDicDetailHeaderView.h; sourceTree = "<group>"; };
 		BA3334A6215F0E2B00CD3E1A /* LGDicDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDicDetailHeaderView.m; sourceTree = "<group>"; };
 		BA3334A8215F0EA000CD3E1A /* LGDicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGDicPlayer.m; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				BAF1C5C8215CC917003FE355 /* UIViewController+LGDictionary.m */,
 				BAE00687215D069D00BC2A92 /* NSMutableAttributedString+LGDictionary.h */,
 				BAE00688215D069D00BC2A92 /* NSMutableAttributedString+LGDictionary.m */,
+				BA2FA61621772F240060F5FF /* NSString+LGDictionary.h */,
+				BA2FA61721772F240060F5FF /* NSString+LGDictionary.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				BA273AC9215E03DE00A68D5C /* LGDicRecordFlowCell.m in Sources */,
 				BAE00689215D069D00BC2A92 /* NSMutableAttributedString+LGDictionary.m in Sources */,
 				BA492761215B7BCD000E31B1 /* LGActivityIndicatorBallPulseAnimation.m in Sources */,
+				BA2FA61821772F240060F5FF /* NSString+LGDictionary.m in Sources */,
 				BA273AC6215E029300A68D5C /* LGDicRecorder.m in Sources */,
 				BA49275B215B7BC5000E31B1 /* LGActivityIndicatorView.m in Sources */,
 				BAE00674215CD21F00BC2A92 /* LGDicRecordViewController.m in Sources */,
