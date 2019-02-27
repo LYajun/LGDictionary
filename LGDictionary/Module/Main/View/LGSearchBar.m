@@ -9,8 +9,10 @@
 #import "LGSearchBar.h"
 #import "NSBundle+LGDictionary.h"
 #import "LGDicAlertView.h"
+#import <BlocksKit/UITextField+BlocksKit.h>
 
-@interface LGSearchBar ()<UITextFieldDelegate>
+
+@interface LGSearchBar ()
 /** 搜索内容 */
 @property (nonatomic,copy) NSString *searchString;
 @property (nonatomic, strong) UIToolbar *customAccessoryView;
@@ -42,8 +44,15 @@
     self.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.returnKeyType = UIReturnKeySearch;
     
-    [self addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    self.delegate = self;
+    [self addTarget:self action:@selector(lg_textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    __weak typeof(self) weakSelf = self;
+    self.bk_shouldChangeCharactersInRangeWithReplacementStringBlock = ^BOOL(UITextField *textField, NSRange range, NSString *string) {
+        return [weakSelf lg_textField:textField shouldChangeCharactersInRange:range replacementString:string];
+    };
+    
+    self.bk_shouldReturnBlock = ^BOOL(UITextField *textField) {
+        return [weakSelf lg_textFieldShouldReturn:textField];
+    };
 }
 - (void)clearText{
     self.searchString = @"";
@@ -56,7 +65,7 @@
     [self resignFirstResponder];
 }
 // 使textField不把输入的拼音认作文本编辑框的内容
-- (void)textFieldDidChange:(UITextField *) textField{
+- (void)lg_textFieldDidChange:(UITextField *) textField{
     UITextRange *selectedRange = [textField markedTextRange];
     NSString *newText = [textField textInRange:selectedRange];
     if (newText.length <= 0) {
@@ -65,13 +74,13 @@
     }
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+- (BOOL)lg_textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if (textField.text.length > 50) {
         return NO;
     }
     return YES;
 }
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)lg_textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     if (self.searchString.length > 0) {
         if (self.lgDelegate && [self.lgDelegate respondsToSelector:@selector(lg_searchBar:didSearchWord:)]) {

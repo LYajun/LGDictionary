@@ -33,6 +33,7 @@
     self.updateDateBlock = ^{
         [weakSelf startReqWithWord:weakSelf.selectWord];
     };
+    
 }
 - (void)dealloc{
     NSLog(@"LGDicRecordViewController dealloc");

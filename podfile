@@ -4,4 +4,5 @@ use_frameworks!
 target 'LGDictionaryDemo’ do
 pod 'Masonry'
 pod 'MJExtension'
+pod 'BlocksKit'
 end
