@@ -20,9 +20,10 @@
     [super viewDidLoad];
     
 }
+// /API/Resources/GetCourseware";
 - (IBAction)inquireWord:(UIButton *)sender {
    LGDicMainViewController *dicVC = [[LGDicMainViewController alloc] init];
-    dicVC.config.dicUrl = @"http://192.168.3.157:10128/API/Resources/GetCourseware";
+    dicVC.config.dicUrl = @"http://192.168.129.8:10103";
     dicVC.config.userID = @"110";
     dicVC.config.parameters = @{
                                  @"Knowledge":@"",

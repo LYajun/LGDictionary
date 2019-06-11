@@ -10,9 +10,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NSBundle (LGDictionary)
-+ (instancetype)lg_dictionaryBundle;
-+ (NSString *)lg_bundlePathWithName:(NSString *)name;
-+ (UIImage *)lg_imageName:(NSString *)name;
-+ (UIImage *)lg_imagePathName:(NSString *)name;
-+ (NSArray *)lg_imageVoiceGifs;
++ (instancetype)lgd_dictionaryBundle;
++ (NSString *)lgd_bundlePathWithName:(NSString *)name;
++ (UIImage *)lgd_imageName:(NSString *)name;
++ (UIImage *)lgd_imagePathName:(NSString *)name;
++ (NSArray *)lgd_imageVoiceGifs;
 @end

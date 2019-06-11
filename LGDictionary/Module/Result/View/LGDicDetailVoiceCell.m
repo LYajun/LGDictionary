@@ -87,7 +87,7 @@
 - (UIButton *)voiceBtn{
     if (!_voiceBtn) {
         _voiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_voiceBtn setImage:[NSBundle lg_imageName:@"lg_voice"] forState:UIControlStateNormal];
+        [_voiceBtn setImage:[NSBundle lgd_imageName:@"lg_voice"] forState:UIControlStateNormal];
         [_voiceBtn addTarget:self action:@selector(voiceAction) forControlEvents:UIControlEventTouchUpInside];
         [_voiceBtn setImageEdgeInsets: UIEdgeInsetsMake(-3, 0, 0, 0)];
     }
@@ -108,7 +108,7 @@
     if (!_playGifImage) {
         _playGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
         _playGifImage.backgroundColor = [UIColor whiteColor];
-        _playGifImage.animationImages = [NSBundle lg_imageVoiceGifs];
+        _playGifImage.animationImages = [NSBundle lgd_imageVoiceGifs];
         _playGifImage.animationDuration = 1.0;
         _playGifImage.hidden = YES;
     }

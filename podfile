@@ -5,4 +5,5 @@ target 'LGDictionaryDemo’ do
 pod 'Masonry'
 pod 'MJExtension'
 pod 'BlocksKit'
+pod 'XMLDictionary'
 end

@@ -16,23 +16,27 @@ PODS:
     - BlocksKit/DynamicDelegate
   - Masonry (1.1.0)
   - MJExtension (3.0.13)
+  - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
   - BlocksKit
   - Masonry
   - MJExtension
+  - XMLDictionary
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - BlocksKit
     - Masonry
     - MJExtension
+    - XMLDictionary
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 903c36cda966c676e6c3567b182f534f4cd97d20
+PODFILE CHECKSUM: bf432b39d60c5e7c00fb54a41a26f68dea37d9d4
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.7.0.beta.3

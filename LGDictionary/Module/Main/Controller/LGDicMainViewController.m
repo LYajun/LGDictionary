@@ -45,7 +45,7 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[NSBundle lg_imageName:@"lg_back"] style:UIBarButtonItemStylePlain target:self action:@selector(navBar_leftItemPressed)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[NSBundle lgd_imageName:@"lg_back"] style:UIBarButtonItemStylePlain target:self action:@selector(navBar_leftItemPressed)];
     self.naviBarTranslucent = self.navigationController.navigationBar.translucent;
     if (self.naviBarTranslucent) {
         self.navigationController.navigationBar.translucent = NO;
@@ -147,7 +147,7 @@
         _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _searchBtn.frame = CGRectMake(0, 0, 40, 28);
         [_searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
-        _searchBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        _searchBtn.titleLabel.font = [UIFont systemFontOfSize:17];
         [_searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_searchBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
         [_searchBtn addTarget:self action:@selector(searchBtnAction:) forControlEvents:UIControlEventTouchUpInside];

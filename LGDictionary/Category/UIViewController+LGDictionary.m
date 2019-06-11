@@ -74,7 +74,7 @@ static char *updateDateBlockKey = "updateDateBlock";
     if (!self.noDataView) {
         self.noDataView = [[UIView alloc]init];
         self.noDataView.backgroundColor = LGDictionaryColorHex(0xEDEDED);
-        UIImageView *img = [[UIImageView alloc] initWithImage:[NSBundle lg_imageName:@"lg_statusView_empty"]];
+        UIImageView *img = [[UIImageView alloc] initWithImage:[NSBundle lgd_imageName:@"lg_statusView_empty"]];
         [ self.noDataView addSubview:img];
         [img mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.noDataView);
@@ -110,7 +110,7 @@ static char *updateDateBlockKey = "updateDateBlock";
     if (!self.loadErrorView) {
         self.loadErrorView = [[UIView alloc]init];
         self.loadErrorView.backgroundColor = LGDictionaryColorHex(0xEDEDED);
-        UIImageView *img = [[UIImageView alloc]initWithImage:[NSBundle lg_imageName:@"lg_statusView_error"]];
+        UIImageView *img = [[UIImageView alloc]initWithImage:[NSBundle lgd_imageName:@"lg_statusView_error"]];
         [self.loadErrorView addSubview:img];
         [img mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.loadErrorView);

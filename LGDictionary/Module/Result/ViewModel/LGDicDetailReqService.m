@@ -14,12 +14,14 @@
 #import "LGDicRecorder.h"
 #import "LGDicModel.h"
 #import "LGDictionaryConst.h"
+#import <XMLDictionary/XMLDictionary.h>
 
 @interface LGDicDetailReqService ()<LGDicHttpProtocol>
 /** 当前控制器 */
 @property (nonatomic,weak) UIViewController<LGDicHttpProtocol> *ownController;
 /** 请求类 */
 @property (nonatomic,strong) LGDicHttpReq *httpReq;
+@property (nonatomic,strong) NSString *apiUrl;
 @end
 @implementation LGDicDetailReqService
 - (instancetype)initWithOwnController:(UIViewController<LGDicHttpProtocol> *)ownController{
@@ -29,22 +31,59 @@
     return self;
 }
 - (void)startReqWithWord:(NSString *)word{
+    if (LGDictionaryIsStrEmpty(self.apiUrl)) {
+        [self loadDicConfigWithWord:word];
+    }else{
+        [self reqWithWord:word];
+    }
+}
+- (void)reqWithWord:(NSString *)word{
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[LGDicConfig shareInstance].parameters];
     [dic setValue:word forKey:[LGDicConfig shareInstance].wordKey];
     [self.ownController lg_setLoadingViewShow:YES];
+    NSString *url = [self.apiUrl stringByAppendingString:@"/API/Resources/GetCourseware"];
     switch ([LGDicConfig shareInstance].reqType) {
         case LGDicReqTypeGET:
-            [self.httpReq get:[LGDicConfig shareInstance].dicUrl parameters:dic];
+            [self.httpReq get:url parameters:dic];
             break;
         case LGDicReqTypePOST:
-            [self.httpReq post:[LGDicConfig shareInstance].dicUrl parameters:dic];
+            [self.httpReq post:url parameters:dic];
             break;
         case LGDicReqTypeOther:
-            [self.httpReq other:[LGDicConfig shareInstance].dicUrl parameters:dic];
+            [self.httpReq other:url parameters:dic];
             break;
         default:
             break;
     }
+    
+}
+- (void)loadDicConfigWithWord:(NSString *)word{
+    NSString *urlStr = [[LGDicConfig shareInstance].dicUrl stringByAppendingFormat:@"/Base/WS/Service_Basic.asmx/WS_G_GetSubSystemServerInfoForAllSubject?sysID=%@",@"629"];
+    urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSURL *requestUrl = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
+    request.timeoutInterval = 15;
+    NSURLSession *session = [NSURLSession sharedSession];
+    __weak typeof(self) weakSelf = self;
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                [weakSelf failure:error];
+            }else{
+                NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSDictionary *dic = [NSDictionary dictionaryWithXMLString:str];
+                NSArray<NSDictionary *> *sysInfoList = [dic arrayValueForKeyPath:@"anyType"];
+                if (!LGDictionaryIsArrEmpty(sysInfoList)) {
+                    NSDictionary *sysInfo = sysInfoList.firstObject;
+                    weakSelf.apiUrl = [sysInfo objectForKey:@"WsSvrAddr"];
+                    [weakSelf reqWithWord:word];
+                }else{
+                    [weakSelf failure:[NSError errorWithDomain:@"LGDicErrorDamain" code:10000 userInfo:@{NSLocalizedDescriptionKey:@"获取配置信息失败"}]];
+                }
+            }
+        });
+    }];
+    [dataTask resume];
 }
 - (void)success:(LGDicModel *)responseObject{
     [[LGDicRecorder shareInstance] addRecordWithWord:responseObject.cwName.lowercaseString meaning:responseObject.wordChineseMean];

@@ -27,7 +27,7 @@
 }
 - (void)config{
     self.inputAccessoryView = self.customAccessoryView;
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[NSBundle lg_imageName:@"lg_search"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[NSBundle lgd_imageName:@"lg_search"]];
     imageView.contentMode = UIViewContentModeCenter;
     CGRect frame = imageView.frame;
     frame.size.width = imageView.frame.size.width + 10;

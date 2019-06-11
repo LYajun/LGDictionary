@@ -73,7 +73,7 @@
         _expandBtn.titleLabel.font = [UIFont systemFontOfSize:16];
         [_expandBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_expandBtn addTarget:self action:@selector(expandAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_expandBtn setImage:[NSBundle lg_imageName:@"lg_expand_cell"] forState:UIControlStateNormal];
+        [_expandBtn setImage:[NSBundle lgd_imageName:@"lg_expand_cell"] forState:UIControlStateNormal];
         [_expandBtn setTitle:@"例句详解" forState:UIControlStateNormal];
     }
     return _expandBtn;
@@ -236,7 +236,7 @@
     if (!_enVoiceBtn) {
         _enVoiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _enVoiceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_enVoiceBtn setImage:[NSBundle lg_imageName:@"lg_voice"] forState:UIControlStateNormal];
+        [_enVoiceBtn setImage:[NSBundle lgd_imageName:@"lg_voice"] forState:UIControlStateNormal];
         [_enVoiceBtn setTitle:@" 英['steibI]" forState:UIControlStateNormal];
         [_enVoiceBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_enVoiceBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
@@ -248,7 +248,7 @@
     if (!_usVoiceBtn) {
         _usVoiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _usVoiceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_usVoiceBtn setImage:[NSBundle lg_imageName:@"lg_voice"] forState:UIControlStateNormal];
+        [_usVoiceBtn setImage:[NSBundle lgd_imageName:@"lg_voice"] forState:UIControlStateNormal];
         [_usVoiceBtn setTitle:@" 美['steibI]" forState:UIControlStateNormal];
         [_usVoiceBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_usVoiceBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
@@ -260,8 +260,8 @@
     if (!_allExpandBtn) {
         _allExpandBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _allExpandBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_allExpandBtn setImage:[NSBundle lg_imageName:@"lg_expand_n"] forState:UIControlStateNormal];
-        [_allExpandBtn setImage:[NSBundle lg_imageName:@"lg_expand_s"] forState:UIControlStateSelected];
+        [_allExpandBtn setImage:[NSBundle lgd_imageName:@"lg_expand_n"] forState:UIControlStateNormal];
+        [_allExpandBtn setImage:[NSBundle lgd_imageName:@"lg_expand_s"] forState:UIControlStateSelected];
         [_allExpandBtn setTitle:@" 全部展开" forState:UIControlStateNormal];
         [_allExpandBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_allExpandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
@@ -273,8 +273,8 @@
     if (!_allFoldBtn) {
         _allFoldBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _allFoldBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_allFoldBtn setImage:[NSBundle lg_imageName:@"lg_fold_n"] forState:UIControlStateNormal];
-        [_allFoldBtn setImage:[NSBundle lg_imageName:@"lg_fold_s"] forState:UIControlStateSelected];
+        [_allFoldBtn setImage:[NSBundle lgd_imageName:@"lg_fold_n"] forState:UIControlStateNormal];
+        [_allFoldBtn setImage:[NSBundle lgd_imageName:@"lg_fold_s"] forState:UIControlStateSelected];
         [_allFoldBtn setTitle:@" 全部折叠" forState:UIControlStateNormal];
         [_allFoldBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_allFoldBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
@@ -286,7 +286,7 @@
     if (!_enPlayGifImage) {
         _enPlayGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
         _enPlayGifImage.backgroundColor = [UIColor whiteColor];
-        _enPlayGifImage.animationImages = [NSBundle lg_imageVoiceGifs];
+        _enPlayGifImage.animationImages = [NSBundle lgd_imageVoiceGifs];
         _enPlayGifImage.animationDuration = 1.0;
         _enPlayGifImage.hidden = YES;
     }
@@ -296,7 +296,7 @@
     if (!_usPlayGifImage) {
         _usPlayGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
         _usPlayGifImage.backgroundColor = [UIColor whiteColor];
-        _usPlayGifImage.animationImages = [NSBundle lg_imageVoiceGifs];
+        _usPlayGifImage.animationImages = [NSBundle lgd_imageVoiceGifs];
         _usPlayGifImage.animationDuration = 1.0;
         _usPlayGifImage.hidden = YES;
     }
