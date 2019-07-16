@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LGDictionary"
-  s.version      = "1.0.7"
+  s.version      = "1.0.8"
   s.summary      = "知识点课件"
 
   s.homepage     = "https://github.com/LYajun/LGDictionary"
@@ -34,4 +34,5 @@ Pod::Spec.new do |s|
   s.dependency 'MJExtension'
   s.dependency 'BlocksKit'
   s.dependency 'XMLDictionary'
+  s.dependency 'YJActivityIndicatorView'
 end

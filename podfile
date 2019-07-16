@@ -6,4 +6,5 @@ pod 'Masonry'
 pod 'MJExtension'
 pod 'BlocksKit'
 pod 'XMLDictionary'
+pod 'YJActivityIndicatorView'
 end

@@ -1,24 +1,24 @@
 //
-//  LGActivityIndicatorView.m
-//  LGActivityIndicatorExample
+//  YJActivityIndicatorView.m
+//
 //
 //  Created by Danil Gontovnik on 5/23/15.
 //  Copyright (c) 2015 Danil Gontovnik. All rights reserved.
 //
 
-#import "LGActivityIndicatorView.h"
-#import "LGActivityIndicatorBallPulseAnimation.h"
+#import "YJActivityIndicatorView.h"
+#import "YJActivityIndicatorBallPulseAnimation.h"
 
 
 static const CGFloat kYJActivityIndicatorDefaultSize = 40.0f;
 
-@interface LGActivityIndicatorView () {
+@interface YJActivityIndicatorView () {
     CALayer *_animationLayer;
 }
 
 @end
 
-@implementation LGActivityIndicatorView
+@implementation YJActivityIndicatorView
 
 #pragma mark -
 #pragma mark Constructors
@@ -33,15 +33,15 @@ static const CGFloat kYJActivityIndicatorDefaultSize = 40.0f;
     return self;
 }
 
-- (id)initWithType:(LGActivityIndicatorAnimationType)type {
+- (id)initWithType:(YJActivityIndicatorAnimationType)type {
     return [self initWithType:type tintColor:[UIColor whiteColor] size:kYJActivityIndicatorDefaultSize];
 }
 
-- (id)initWithType:(LGActivityIndicatorAnimationType)type tintColor:(UIColor *)tintColor {
+- (id)initWithType:(YJActivityIndicatorAnimationType)type tintColor:(UIColor *)tintColor {
     return [self initWithType:type tintColor:tintColor size:kYJActivityIndicatorDefaultSize];
 }
 
-- (id)initWithType:(LGActivityIndicatorAnimationType)type tintColor:(UIColor *)tintColor size:(CGFloat)size {
+- (id)initWithType:(YJActivityIndicatorAnimationType)type tintColor:(UIColor *)tintColor size:(CGFloat)size {
     self = [super init];
     if (self) {
         _type = type;
@@ -69,7 +69,7 @@ static const CGFloat kYJActivityIndicatorDefaultSize = 40.0f;
 - (void)setupAnimation {
     _animationLayer.sublayers = nil;
     
-    id<LGActivityIndicatorAnimationProtocol> animation = [LGActivityIndicatorView activityIndicatorAnimationForAnimationType:_type];
+    id<YJActivityIndicatorAnimationProtocol> animation = [YJActivityIndicatorView activityIndicatorAnimationForAnimationType:_type];
     
     if ([animation respondsToSelector:@selector(setupAnimationInLayer:withSize:tintColor:)]) {
         [animation setupAnimationInLayer:_animationLayer withSize:CGSizeMake(_size, _size) tintColor:_tintColor];
@@ -95,7 +95,7 @@ static const CGFloat kYJActivityIndicatorDefaultSize = 40.0f;
 #pragma mark -
 #pragma mark Setters
 
-- (void)setType:(LGActivityIndicatorAnimationType)type {
+- (void)setType:(YJActivityIndicatorAnimationType)type {
     if (_type != type) {
         _type = type;
         
@@ -132,8 +132,8 @@ static const CGFloat kYJActivityIndicatorDefaultSize = 40.0f;
 #pragma mark -
 #pragma mark Getters
 
-+ (id<LGActivityIndicatorAnimationProtocol>)activityIndicatorAnimationForAnimationType:(LGActivityIndicatorAnimationType)type {
-    return [[LGActivityIndicatorBallPulseAnimation alloc] init];
++ (id<YJActivityIndicatorAnimationProtocol>)activityIndicatorAnimationForAnimationType:(YJActivityIndicatorAnimationType)type {
+    return [[YJActivityIndicatorBallPulseAnimation alloc] init];
 }
 
 #pragma mark -

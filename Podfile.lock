@@ -17,12 +17,14 @@ PODS:
   - Masonry (1.1.0)
   - MJExtension (3.0.13)
   - XMLDictionary (1.4.1)
+  - YJActivityIndicatorView (1.0.0)
 
 DEPENDENCIES:
   - BlocksKit
   - Masonry
   - MJExtension
   - XMLDictionary
+  - YJActivityIndicatorView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -30,13 +32,15 @@ SPEC REPOS:
     - Masonry
     - MJExtension
     - XMLDictionary
+    - YJActivityIndicatorView
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
+  YJActivityIndicatorView: f51112fa59d69762bd6147cf0da573ff2a9a0215
 
-PODFILE CHECKSUM: bf432b39d60c5e7c00fb54a41a26f68dea37d9d4
+PODFILE CHECKSUM: 3a7b0c725a4633059fd67a7d2b7bc434a718dfe0
 
 COCOAPODS: 1.7.0.beta.3

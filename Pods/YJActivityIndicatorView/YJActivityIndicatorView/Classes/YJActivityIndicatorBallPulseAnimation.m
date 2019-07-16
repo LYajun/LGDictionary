@@ -1,14 +1,14 @@
 //
-//  LGActivityIndicatorBallPulseAnimation.m
-//  LGActivityIndicatorExample
+//  YJActivityIndicatorBallPulseAnimation.m
+//
 //
 //  Created by Nguyen Vinh on 7/19/15.
 //  Copyright (c) 2015 Danil Gontovnik. All rights reserved.
 //
 
-#import "LGActivityIndicatorBallPulseAnimation.h"
+#import "YJActivityIndicatorBallPulseAnimation.h"
 
-@implementation LGActivityIndicatorBallPulseAnimation
+@implementation YJActivityIndicatorBallPulseAnimation
 
 - (void)setupAnimationInLayer:(CALayer *)layer withSize:(CGSize)size tintColor:(UIColor *)tintColor {
     CGFloat circlePadding = 5.0f;

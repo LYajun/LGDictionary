@@ -9,7 +9,7 @@
 #import "UIViewController+LGDictionary.h"
 #import <objc/runtime.h>
 #import <Masonry/Masonry.h>
-#import "LGActivityIndicatorView.h"
+#import <YJActivityIndicatorView/YJActivityIndicatorView.h>
 #import "LGDictionaryConst.h"
 #import "NSBundle+LGDictionary.h"
 
@@ -61,7 +61,7 @@ static char *updateDateBlockKey = "updateDateBlock";
     if (!self.loadingView) {
         self.loadingView = [[UIView alloc] init];
         self.loadingView.backgroundColor = LGDictionaryColorHex(0xEDEDED);
-        LGActivityIndicatorView *activityIndicatorView = [[LGActivityIndicatorView alloc] initWithType:LGActivityIndicatorAnimationTypeBallPulse tintColor:LGDictionaryColorHex(0x0EB5F4)];
+        YJActivityIndicatorView *activityIndicatorView = [[YJActivityIndicatorView alloc] initWithType:YJActivityIndicatorAnimationTypeBallPulse tintColor:LGDictionaryColorHex(0x989898)];
         [self.loadingView addSubview:activityIndicatorView];
         [activityIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self.loadingView);
@@ -84,7 +84,7 @@ static char *updateDateBlockKey = "updateDateBlock";
         lab.tag = 11;
         lab.font = [UIFont systemFontOfSize:14];
         lab.textAlignment = NSTextAlignmentCenter;
-        lab.textColor =  LGDictionaryColorHex(0x666666);
+        lab.textColor =  LGDictionaryColorHex(0x989898);
         if (self.noDataText && self.noDataText.length > 0) {
             lab.text = self.noDataText;
         }else{
@@ -120,7 +120,7 @@ static char *updateDateBlockKey = "updateDateBlock";
         lab.tag = 11;
         lab.font = [UIFont systemFontOfSize:14];
         lab.textAlignment = NSTextAlignmentCenter;
-        lab.textColor = LGDictionaryColorHex(0xAAAAAA);
+        lab.textColor = LGDictionaryColorHex(0x989898);
         if (self.loadErrorText && self.loadErrorText.length > 0) {
             lab.text = self.loadErrorText;
         }else{

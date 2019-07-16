@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,9 +24,6 @@
 		BA4926DD215B63D2000E31B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4926DB215B63D2000E31B1 /* ViewController.m */; };
 		BA4926E1215B65D7000E31B1 /* LGDictionary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA4926E0215B65D7000E31B1 /* LGDictionary.bundle */; };
 		BA4926E5215B7296000E31B1 /* NSBundle+LGDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4926E4215B7296000E31B1 /* NSBundle+LGDictionary.m */; };
-		BA49275B215B7BC5000E31B1 /* LGActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA492759215B7BC5000E31B1 /* LGActivityIndicatorView.m */; };
-		BA492760215B7BCD000E31B1 /* LGActivityIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA49275C215B7BCC000E31B1 /* LGActivityIndicatorAnimation.m */; };
-		BA492761215B7BCD000E31B1 /* LGActivityIndicatorBallPulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA49275D215B7BCC000E31B1 /* LGActivityIndicatorBallPulseAnimation.m */; };
 		BA492766215B85EE000E31B1 /* LGDictionaryConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BA492765215B85EE000E31B1 /* LGDictionaryConst.m */; };
 		BA49276D215B8C5E000E31B1 /* LGDicMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA49276C215B8C5E000E31B1 /* LGDicMainViewController.m */; };
 		BA83FDCF2160637700C742EA /* LGDicDetailVoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA83FDCE2160637700C742EA /* LGDicDetailVoiceCell.m */; };
@@ -79,13 +76,6 @@
 		BA4926E0215B65D7000E31B1 /* LGDictionary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LGDictionary.bundle; sourceTree = "<group>"; };
 		BA4926E3215B7296000E31B1 /* NSBundle+LGDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LGDictionary.h"; sourceTree = "<group>"; };
 		BA4926E4215B7296000E31B1 /* NSBundle+LGDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LGDictionary.m"; sourceTree = "<group>"; };
-		BA492758215B7BC5000E31B1 /* LGActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivityIndicatorView.h; sourceTree = "<group>"; };
-		BA492759215B7BC5000E31B1 /* LGActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGActivityIndicatorView.m; sourceTree = "<group>"; };
-		BA49275A215B7BC5000E31B1 /* LGActivityIndicatorAnimationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivityIndicatorAnimationProtocol.h; sourceTree = "<group>"; };
-		BA49275C215B7BCC000E31B1 /* LGActivityIndicatorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGActivityIndicatorAnimation.m; sourceTree = "<group>"; };
-		BA49275D215B7BCC000E31B1 /* LGActivityIndicatorBallPulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGActivityIndicatorBallPulseAnimation.m; sourceTree = "<group>"; };
-		BA49275E215B7BCD000E31B1 /* LGActivityIndicatorBallPulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivityIndicatorBallPulseAnimation.h; sourceTree = "<group>"; };
-		BA49275F215B7BCD000E31B1 /* LGActivityIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGActivityIndicatorAnimation.h; sourceTree = "<group>"; };
 		BA492764215B85EE000E31B1 /* LGDictionaryConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictionaryConst.h; sourceTree = "<group>"; };
 		BA492765215B85EE000E31B1 /* LGDictionaryConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictionaryConst.m; sourceTree = "<group>"; };
 		BA49276B215B8C5E000E31B1 /* LGDicMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDicMainViewController.h; sourceTree = "<group>"; };
@@ -238,23 +228,8 @@
 				BA3334A8215F0EA000CD3E1A /* LGDicPlayer.m */,
 				BAE0067F215D041100BC2A92 /* Http */,
 				BAE00678215CF5CE00BC2A92 /* AlertView */,
-				BA4926EC215B7B52000E31B1 /* ActivityIndicatorView */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		BA4926EC215B7B52000E31B1 /* ActivityIndicatorView */ = {
-			isa = PBXGroup;
-			children = (
-				BA49275F215B7BCD000E31B1 /* LGActivityIndicatorAnimation.h */,
-				BA49275C215B7BCC000E31B1 /* LGActivityIndicatorAnimation.m */,
-				BA49275E215B7BCD000E31B1 /* LGActivityIndicatorBallPulseAnimation.h */,
-				BA49275D215B7BCC000E31B1 /* LGActivityIndicatorBallPulseAnimation.m */,
-				BA49275A215B7BC5000E31B1 /* LGActivityIndicatorAnimationProtocol.h */,
-				BA492758215B7BC5000E31B1 /* LGActivityIndicatorView.h */,
-				BA492759215B7BC5000E31B1 /* LGActivityIndicatorView.m */,
-			);
-			path = ActivityIndicatorView;
 			sourceTree = "<group>";
 		};
 		BA492762215B84D9000E31B1 /* Common */ = {
@@ -527,7 +502,6 @@
 				BA4926E5215B7296000E31B1 /* NSBundle+LGDictionary.m in Sources */,
 				BAE0067B215CF5ED00BC2A92 /* LGDicAlertView.m in Sources */,
 				BAF1C5C9215CC917003FE355 /* UIViewController+LGDictionary.m in Sources */,
-				BA492760215B7BCD000E31B1 /* LGActivityIndicatorAnimation.m in Sources */,
 				BA273ACC215E1FB400A68D5C /* LGDicRecordClearView.m in Sources */,
 				BA49276D215B8C5E000E31B1 /* LGDicMainViewController.m in Sources */,
 				BA4926D3215B6283000E31B1 /* main.m in Sources */,
@@ -537,10 +511,8 @@
 				BA4926C5215B6280000E31B1 /* AppDelegate.m in Sources */,
 				BA273AC9215E03DE00A68D5C /* LGDicRecordFlowCell.m in Sources */,
 				BAE00689215D069D00BC2A92 /* NSMutableAttributedString+LGDictionary.m in Sources */,
-				BA492761215B7BCD000E31B1 /* LGActivityIndicatorBallPulseAnimation.m in Sources */,
 				BA2FA61821772F240060F5FF /* NSString+LGDictionary.m in Sources */,
 				BA273AC6215E029300A68D5C /* LGDicRecorder.m in Sources */,
-				BA49275B215B7BC5000E31B1 /* LGActivityIndicatorView.m in Sources */,
 				BAE00674215CD21F00BC2A92 /* LGDicRecordViewController.m in Sources */,
 				BA273AC3215DFFC700A68D5C /* LGDicRecordFlowLayout.m in Sources */,
 				BAE0067E215D02F600BC2A92 /* LGDicConfig.m in Sources */,

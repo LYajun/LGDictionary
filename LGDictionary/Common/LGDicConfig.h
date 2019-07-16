@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger,LGDicReqType){
 @interface LGDicConfig : NSObject
 /** 用户ID */
 @property (nonatomic,copy) NSString *userID;
-/** 词典地址 */
+/** 基础平台服务器设置地址 */
 @property (nonatomic,copy) NSString *dicUrl;
 /** 直接查询的单词 */
 @property (nonatomic,copy) NSString *word;

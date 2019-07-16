@@ -1,14 +1,14 @@
 //
-//  LGActivityIndicatorAnimation.m
-//  LGActivityIndicatorExample
+//  YJActivityIndicatorAnimation.m
+//
 //
 //  Created by Danil Gontovnik on 8/10/16.
 //  Copyright © 2016 Danil Gontovnik. All rights reserved.
 //
 
-#import "LGActivityIndicatorAnimation.h"
+#import "YJActivityIndicatorAnimation.h"
 
-@implementation LGActivityIndicatorAnimation
+@implementation YJActivityIndicatorAnimation
 
 - (CABasicAnimation *)createBasicAnimationWithKeyPath:(NSString *)keyPath {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
