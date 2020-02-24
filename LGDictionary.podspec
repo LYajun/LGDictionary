@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LGDictionary"
-  s.version      = "1.0.8"
+  s.version      = "1.0.9"
   s.summary      = "知识点课件"
 
   s.homepage     = "https://github.com/LYajun/LGDictionary"

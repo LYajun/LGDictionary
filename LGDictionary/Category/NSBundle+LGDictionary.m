@@ -30,4 +30,7 @@
 + (NSArray *)lgd_imageVoiceGifs{
     return @[[NSBundle lgd_imageName:@"record_animate-1"],[NSBundle lgd_imageName:@"record_animate-2"],[NSBundle lgd_imageName:@"record_animate-3"],[NSBundle lgd_imageName:@"record_animate-4"]];
 }
++ (UIImage *)lgd_animatedImageNamed:(NSString *)name duration:(NSInteger)duration{
+    return [UIImage animatedImageNamed:[self lgd_bundlePathWithName:name] duration:duration];
+}
 @end

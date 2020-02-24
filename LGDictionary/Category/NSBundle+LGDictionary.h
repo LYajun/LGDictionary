@@ -15,4 +15,5 @@
 + (UIImage *)lgd_imageName:(NSString *)name;
 + (UIImage *)lgd_imagePathName:(NSString *)name;
 + (NSArray *)lgd_imageVoiceGifs;
++ (UIImage *)lgd_animatedImageNamed:(NSString *)name duration:(NSInteger)duration;
 @end

@@ -88,9 +88,6 @@
 @property (strong,nonatomic) UIButton *allFoldBtn;
 @property (strong, nonatomic) UILabel *wordL;
 @property (strong, nonatomic) UILabel *textL;
-
-@property (strong, nonatomic) UIImageView *enPlayGifImage;
-@property (strong, nonatomic) UIImageView *usPlayGifImage;
 @end
 @implementation LGDicDetailHeaderView
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier{
@@ -126,16 +123,18 @@
         make.centerX.equalTo(self.contentView);
         make.height.mas_equalTo(35);
     }];
-    [self.contentView addSubview:self.enVoiceBtn];
-    [self.enVoiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.wordL);
-        make.top.equalTo(self.wordL.mas_bottom).offset(10);
-        make.height.mas_equalTo(26);
-    }];
     [self.contentView addSubview:self.usVoiceBtn];
     [self.usVoiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.height.equalTo(self.enVoiceBtn);
-        make.left.equalTo(self.enVoiceBtn.mas_right).offset(30);
+        make.left.equalTo(self.wordL);
+        make.top.equalTo(self.wordL.mas_bottom).offset(10);
+        make.width.mas_equalTo(60);
+        make.height.mas_equalTo(26);
+    }];
+    [self.contentView addSubview:self.enVoiceBtn];
+    [self.enVoiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.height.equalTo(self.usVoiceBtn);
+        make.width.mas_equalTo(60);
+        make.left.equalTo(self.usVoiceBtn.mas_right).offset(30);
     }];
     [self.contentView addSubview:self.textL];
     [self.textL mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -145,40 +144,41 @@
         make.bottom.equalTo(botView.mas_top).offset(-10);
     }];
     
-    [self.contentView addSubview:self.enPlayGifImage];
-    [self.enPlayGifImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.enVoiceBtn);
-        make.left.equalTo(self.enVoiceBtn);
-        make.width.height.mas_equalTo(20);
-    }];
-    [self.contentView addSubview:self.usPlayGifImage];
-    [self.usPlayGifImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.usVoiceBtn);
-        make.left.equalTo(self.usVoiceBtn);
-        make.width.height.mas_equalTo(20);
-    }];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopGif) name:LGDictionaryPlayerDidFinishPlayNotification object:nil];
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)stopGif{
-    self.enPlayGifImage.hidden = YES;
-    [self.enPlayGifImage stopAnimating];
-    self.usPlayGifImage.hidden = YES;
-    [self.usPlayGifImage stopAnimating];
+    self.enVoiceBtn.selected = NO;
+    self.usVoiceBtn.selected = NO;
 }
 - (void)setCategoryModel:(LGDicCategoryModel *)categoryModel{
     _categoryModel = categoryModel;
     LGDicModel *wordModel = [categoryModel.categoryList firstObject];
     self.wordL.text = wordModel.cwName;
     self.textL.attributedText = [wordModel wordChineseMeanAttr];
-    [self.enVoiceBtn setTitle:[@" 英" stringByAppendingString:[NSMutableAttributedString lg_AttributeWithHtmlStr:wordModel.unPText font:14].string] forState:UIControlStateNormal];
-    [self.usVoiceBtn setTitle:[@" 美" stringByAppendingString:[NSMutableAttributedString lg_AttributeWithHtmlStr:wordModel.usPText font:14].string] forState:UIControlStateNormal];
+    [self setBtnEdgeInsetsWithUnPhonetic:[@"英 " stringByAppendingString:[NSMutableAttributedString lg_AttributeWithHtmlStr:wordModel.unPText font:14].string] atBtn:self.enVoiceBtn];
+    [self setBtnEdgeInsetsWithUnPhonetic:[@"美 " stringByAppendingString:[NSMutableAttributedString lg_AttributeWithHtmlStr:wordModel.usPText font:14].string] atBtn:self.usVoiceBtn];
     self.allFoldBtn.selected = !categoryModel.foldEnable;
     self.allFoldBtn.userInteractionEnabled = categoryModel.foldEnable;
     self.allExpandBtn.selected = !categoryModel.expandEnable;
     self.allExpandBtn.userInteractionEnabled = categoryModel.expandEnable;
+}
+- (void)setBtnEdgeInsetsWithUnPhonetic:(NSString *) unPhonetic atBtn:(UIButton *) btn{
+    CGFloat space = 2;
+    [btn setTitle:unPhonetic forState:UIControlStateNormal];
+    UIImage *btnImage = [NSBundle lgd_imageName:@"lg_voice"];
+    CGFloat imageWidth = btnImage.size.width;
+    CGFloat  titleWidth = [unPhonetic sizeWithAttributes:@{NSFontAttributeName:btn.titleLabel.font}].width+10;
+    //    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -3)];
+    //     [btn setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 0)];
+    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -(imageWidth + space*0.5), 0, (imageWidth + space*0.5))];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, (titleWidth + space*0.5), 0, -(titleWidth + space*0.5))];
+    [btn mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(titleWidth + imageWidth);
+    }];
 }
 - (void)enVoiceAction{
     LGDicModel *wordModel = [self.categoryModel.categoryList firstObject];
@@ -189,8 +189,7 @@
         [[LGDicPlayer shareInstance] startPlayWithUrl:wordModel.unPVoice];
     }
     [[LGDicPlayer shareInstance] play];
-    self.enPlayGifImage.hidden = NO;
-    [self.enPlayGifImage startAnimating];
+    self.enVoiceBtn.selected = YES;
 }
 - (void)usVoiceAction{
     LGDicModel *wordModel = [self.categoryModel.categoryList firstObject];
@@ -201,8 +200,7 @@
         [[LGDicPlayer shareInstance] startPlayWithUrl:wordModel.usPVoice];
     }
     [[LGDicPlayer shareInstance] play];
-    self.usPlayGifImage.hidden = NO;
-    [self.usPlayGifImage startAnimating];
+    self.usVoiceBtn.selected = YES;
 }
 - (void)allExpandAction{
     if (self.allExpandBlock) {
@@ -238,6 +236,7 @@
         _enVoiceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_enVoiceBtn setImage:[NSBundle lgd_imageName:@"lg_voice"] forState:UIControlStateNormal];
         [_enVoiceBtn setTitle:@" 英['steibI]" forState:UIControlStateNormal];
+        [_enVoiceBtn setImage:[NSBundle lgd_animatedImageNamed:@"voice_animate-" duration:1] forState:UIControlStateSelected];
         [_enVoiceBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_enVoiceBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
         [_enVoiceBtn addTarget:self action:@selector(enVoiceAction) forControlEvents:UIControlEventTouchUpInside];
@@ -249,6 +248,7 @@
         _usVoiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _usVoiceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_usVoiceBtn setImage:[NSBundle lgd_imageName:@"lg_voice"] forState:UIControlStateNormal];
+        [_usVoiceBtn setImage:[NSBundle lgd_animatedImageNamed:@"voice_animate-" duration:1] forState:UIControlStateSelected];
         [_usVoiceBtn setTitle:@" 美['steibI]" forState:UIControlStateNormal];
         [_usVoiceBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_usVoiceBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
@@ -282,24 +282,5 @@
     }
     return _allFoldBtn;
 }
-- (UIImageView *)enPlayGifImage{
-    if (!_enPlayGifImage) {
-        _enPlayGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _enPlayGifImage.backgroundColor = [UIColor whiteColor];
-        _enPlayGifImage.animationImages = [NSBundle lgd_imageVoiceGifs];
-        _enPlayGifImage.animationDuration = 1.0;
-        _enPlayGifImage.hidden = YES;
-    }
-    return _enPlayGifImage;
-}
-- (UIImageView *)usPlayGifImage{
-    if (!_usPlayGifImage) {
-        _usPlayGifImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _usPlayGifImage.backgroundColor = [UIColor whiteColor];
-        _usPlayGifImage.animationImages = [NSBundle lgd_imageVoiceGifs];
-        _usPlayGifImage.animationDuration = 1.0;
-        _usPlayGifImage.hidden = YES;
-    }
-    return _usPlayGifImage;
-}
+
 @end
